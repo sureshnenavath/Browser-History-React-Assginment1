@@ -44,7 +44,6 @@ const initialHistoryList = [
     title: 'GitHub: Where the world builds software · GitHub',
     domainUrl: 'github.com',
   },
-
   {
     id: 6,
     timeAccessed: '02:45 PM',
@@ -59,7 +58,6 @@ const initialHistoryList = [
     title: 'Stack Overflow - Where Developers Learn, Share, & Build Careers',
     domainUrl: 'stackoverflow.com',
   },
-
   {
     id: 8,
     timeAccessed: '09:25 AM',
@@ -76,22 +74,27 @@ const initialHistoryList = [
   },
 ]
 
-// Replace your code here
 const BrowserHistory = () => {
   const [historyList, setHistoryList] = useState(initialHistoryList)
   const [userInput, setUserInput] = useState('')
+
+  // **Handle Search Input**
   const onHandleSearchInput = event => {
     const searchInput = event.target.value
     setUserInput(searchInput)
-    const newHistoryList = initialHistoryList.filter(eachItem =>
-      eachItem.title.toLowerCase().includes(searchInput.toLowerCase()),
-    )
-    setHistoryList(newHistoryList)
   }
+
+  // **Handle Deletion**
   const onHandleDeleteItem = id => {
     const newHistoryList = historyList.filter(eachItem => eachItem.id !== id)
     setHistoryList(newHistoryList)
   }
+
+  // **Filter Search Results**
+  const filteredList = historyList.filter(eachItem =>
+    eachItem.title.toLowerCase().includes(userInput.toLowerCase()),
+  )
+
   return (
     <div className="main">
       <div className="nav-container">
@@ -109,6 +112,8 @@ const BrowserHistory = () => {
             className="search-icon"
           />
           <input
+            type="search"
+            role="searchbox"
             placeholder="Search history"
             className="search-input"
             value={userInput}
@@ -116,10 +121,10 @@ const BrowserHistory = () => {
           />
         </div>
       </div>
-      {historyList.length > 0 ? (
+      {filteredList.length > 0 ? (
         <div className="history-section">
           <ul>
-            {historyList.map(eachItem => (
+            {filteredList.map(eachItem => (
               <li key={eachItem.id}>
                 <div className="content">
                   <div className="list-items">
@@ -135,12 +140,17 @@ const BrowserHistory = () => {
                     </div>
                   </div>
                   <div className="delete-icon-section">
-                    <img
-                      src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
-                      className="delete"
-                      alt="delete icon"
+                    <button
+                      data-testid="delete"
+                      className="delete-btn"
                       onClick={() => onHandleDeleteItem(eachItem.id)}
-                    />
+                    >
+                      <img
+                        src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
+                        className="delete"
+                        alt="delete icon"
+                      />
+                    </button>
                   </div>
                 </div>
               </li>
@@ -149,7 +159,7 @@ const BrowserHistory = () => {
         </div>
       ) : (
         <div className="not-found-section">
-          <p>There is not history to show</p>
+          <p>There is no history to show</p>
         </div>
       )}
     </div>
