@@ -1,0 +1,104 @@
+.main {
+  height: 100%;
+  border: 1px solid #64748b;
+  margin: 5px;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2d5fd2;
+  padding: 20px;
+  color: white;
+  position: relative;
+}
+
+.app-logo {
+  margin-left: 15px;
+}
+
+.icon-search-container {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%; /* Adjust width as needed */
+  max-width: 400px; /* Prevents it from becoming too wide */
+  min-width: 200px;
+}
+
+.search-input {
+  flex-grow: 1; /* Allows input to take all available space */
+  background-color: #1a3e9d;
+  border: 1px solid #64748b;
+  outline: none;
+  color: white;
+  font-size: 14px;
+  height: 30px;
+}
+
+.search-icon {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background-color: #1a3e9d;
+  border: 1px solid #64748b;
+}
+
+.search-input::placeholder {
+  color: #64748b;
+}
+.history-section {
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
+  margin: 50px;
+  padding: 20px;
+  padding-right: 50px;
+  margin-top: 30px;
+  border-radius: 20px;
+}
+li {
+  list-style: none;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.list-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.time {
+}
+.domain-logo {
+  height: 20px;
+  width: 20px;
+  
+}
+.domain-name {
+  color: #272e39;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.domain-url {
+  color: #64748b;
+}
+.delete-icon-section, .logo-title-url-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-icon {
+  height: 30px;
+  width: 30px;
+}
+.not-found-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
